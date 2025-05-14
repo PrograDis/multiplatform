@@ -15,3 +15,4 @@ EXPOSE 8000
 
 # Comando para ejecutar la app
 CMD ["python", "app.py"]
+
