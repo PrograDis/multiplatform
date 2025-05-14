@@ -1,18 +1,11 @@
-# Usa una imagen ligera de Python
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de tu app
-COPY . /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Instala las dependencias
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expón el puerto que usará la app
-EXPOSE 8000
-
-# Comando para ejecutar la app
+COPY . .
 CMD ["python", "app.py"]
-
+# Expose the port the app runs on
+EXPOSE 8000
