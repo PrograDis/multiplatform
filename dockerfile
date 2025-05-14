@@ -1,24 +1,15 @@
+# Usa una imagen ligera de Python
 FROM python:3.11-slim
 
-# Evita interacciones al instalar paquetes
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Instala las dependencias del sistema necesarias
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libatlas-base-dev \
-    libopenblas-dev \
-    liblapack-dev \
-    gfortran \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copia los archivos del proyecto
+# Establece el directorio de trabajo
 WORKDIR /app
+
+# Copia los archivos de tu app
 COPY . /app
 
-# Instala las dependencias de Python
-RUN pip install --upgrade pip
-RUN pip install fastapi pandas numpy scikit-learn pydantic
+# Instala las dependencias
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando por defecto
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Comando para ejecutar la app
+CMD ["python", "app.py"]
+
