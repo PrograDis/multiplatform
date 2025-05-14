@@ -7,8 +7,8 @@ app = Flask(__name__)
 def home():
     return """
     <h1>¡Página en Railway!</h1>
-    <button onclick="location.href='https://pagina-heroku.com'">Ir a Heroku</button>
-    <button onclick="location.href='https://pagina-digitalocean.com'">Ir a DigitalOcean</button>
+    <button onclick="location.href='https://heroku-deployment-0de4ea1c85ec.herokuapp.com'">Ir a Heroku</button>
+    <button onclick="location.href='hhttps://shark-app-az7mh.ondigitalocean.app'">Ir a DigitalOcean</button>
     """
 
 if __name__ == "__main__":
